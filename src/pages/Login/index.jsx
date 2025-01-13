@@ -66,6 +66,10 @@ export default function Login() {
             if(token){
                 localStorage.setItem('token', token);
                 toast.success("Login efetuado com sucesso!");
+                          
+                setTimeout(() => {
+                    window.location.href = "/homeInstructor";
+                }, 2000);
             }
         }catch(error){
             toast.error(error.response?.data?.message || "Erro ao efetuar login.");

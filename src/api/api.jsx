@@ -35,7 +35,7 @@ api.interceptors.response.use(
 const apiService ={
     getAllCourses: () => api.get("/course"),
     getCourseById: (id) => api.get(`/course/${id}`),
-    createCourse: (courseData) => api.post("/course", courseData),
+    createCourse: (courseData) => api.post("course", courseData),
     updateCourse: (id, courseData) =>
       api.put(`/course/${id}`, courseData),
     deleteCourse: (id) => api.delete(`/course/${id}`),
