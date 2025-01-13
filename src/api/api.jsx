@@ -1,5 +1,5 @@
 import axios from "axios";
-const API_BASE_URL = "http://localhost:5017/api";
+const API_BASE_URL = "https://localhost:7259/api";
 
 const getToken = () => {
     return localStorage.getItem("token");
@@ -24,13 +24,12 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-    (response) => response, (error) => {
-        if (error.response.status === 401) {
-            localStorage.removeItem("token");
-            window.location.href = "/login";
-        }
-        return Promise.reject(error);
-    }
+  (response) => response, (error) => {
+      if (error.response.status === 401) {
+          localStorage.removeItem("token");
+      }
+      return Promise.reject(error);
+  }
 );
 
 const apiService ={
@@ -54,12 +53,12 @@ const apiService ={
     getModulesByCourse: (courseId) =>
       api.get(`/module/course/${courseId}`),
   
-    getUserById: (id) => api.get(`/user/${id}`),
-    login: (credentials) => api.post("/user/login", credentials),
+    getUserById: (id) => api.get(`user/${id}`),
+    login: (credentials) => api.post("user/login", credentials),
     register: (registrationData) =>
-      api.post("/user/register", registrationData),
-    updateUser: (id, userData) => api.put(`/user/update/${id}`, userData),
-    inactivateUser: (id) => api.put(`/user/inactivate/${id}`),
+      api.post("user/register", registrationData),
+    updateUser: (id, userData) => api.put(`user/update/${id}`, userData),
+    inactivateUser: (id) => api.put(`user/inactivate/${id}`),
 };
 
 export default apiService;

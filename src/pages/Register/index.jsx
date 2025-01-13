@@ -17,9 +17,11 @@ import { HiOutlineLockClosed } from 'react-icons/hi';
 import { ThemeContext } from '../../context/themeContext';
 import { toast } from 'react-toastify';
 
-export default function Login() {
+export default function Register() {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const { switchTheme, isDarkMode } = useContext(ThemeContext);
 
@@ -51,30 +53,30 @@ export default function Login() {
         </a>
     )
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
 
-        if (!email || !password) {
+        if (!name || !email || !password || !role) {
             toast.warning("Preencha todos os campos.");
             return;
         }
 
         try{
-            const response = await apiService.login({ email, password });
-            const token  = response.data.token;
-            if(token){
-                localStorage.setItem('token', token);
-                toast.success("Login efetuado com sucesso!");
-            }
+            await apiService.register({ name, email, password, role });
+            toast.success("Cadastro realizado com sucesso! Redirecionando para o login...");
+            
+            setTimeout(() => {
+                window.location.href = "/login";
+            }, 2000);
         }catch(error){
-            toast.error(error.response?.data?.message || "Erro ao efetuar login.");
+            toast.error(error.response?.data?.message || "Erro ao efetuar cadastro.");
         }
     };
 
     return (
         <Container>
-            <Imagem src={foto} alt="icon_curso" />
+            <Imagem src={foto} alt="icon_cursos" />
             <AccessibilityContainer>
                 <Accessibility
                     aria-label="botao contraste"
@@ -99,15 +101,24 @@ export default function Login() {
                 </Accessibility>
             </AccessibilityContainer >
 
-            <Forme onSubmit={handleLogin}>
-                <Logo src={foto} alt="icon_curso" />
+            <Forme onSubmit={handleRegister}>
+                <Logo src={foto} alt="icon_cursos" />
                 <Titulo>Sistema de Cursos Online</Titulo>
+                <InputGroup className="mb-3">
+                    <Form.Control
+                        placeholder="Username"
+                        aria-label="Nome"
+                        tabIndex="1"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </InputGroup>
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
                     <Form.Control
                         placeholder="Email"
                         aria-label="Email"
-                        tabIndex="1"
+                        tabIndex="2"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -124,6 +135,31 @@ export default function Login() {
                     />
                     <InputGroup.Text id="basic-addon5">{handlePasswordButton}</InputGroup.Text>
                 </InputGroup>
+                <Form.Group className="mb-3">
+                    <Form.Label>Para qual função é o cadastro?</Form.Label>
+                        <div key="inline-radio" className="d-flex">
+                            <Form.Check
+                                type="radio"
+                                inline
+                                label="Aluno"
+                                name="role"
+                                value="Student"
+                                onChange={(e) => setRole(e.target.value)}
+                                tabIndex="4"
+                                aria-label="Aluno"
+                            />
+                            <Form.Check
+                                type="radio"
+                                inline
+                                label="Instrutor"
+                                name="role"
+                                value="Instructor"
+                                onChange={(e) => setRole(e.target.value)}
+                                tabIndex="5"
+                                aria-label="Instrutor"
+                             />
+                        </div>
+                    </Form.Group>
                 <ButtonEntrar type="submit" tabIndex="4" aria-label="botao entrar">
                     <TextoEntrar>Entrar</TextoEntrar>
                 </ButtonEntrar>
