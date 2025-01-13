@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import apiService from "../../api/api";
-import { Container, Header, CourseCard, Button } from "./style";
+import { Container, Header, CourseCard, Button, CourseImage, CourseInfo } from "./style"; 
+import { TitleCourse } from "./style";
+import { DescriptionCourse } from "./style";
+import { ButtonDelete } from "./style";
+import { ButtonEdit } from "./style";
 
 export default function HomeInstructor() {
   const [courses, setCourses] = useState([]);
@@ -51,18 +55,26 @@ export default function HomeInstructor() {
         <div>
           {courses.map((course) => (
             <CourseCard key={course.id}>
-              <h3>{course.title}</h3>
-              <p>{course.description}</p>
-              <div>
-                <Button
-                  onClick={() => window.location.href = `/edit-course/${course.id}`}
-                >
-                  Editar
-                </Button>
-                <Button onClick={() => handleDelete(course.id)} danger>
-                  Excluir
-                </Button>
-              </div>
+              {course.coverImage && (
+                <CourseImage
+                  src={`data:image/jpeg;base64,${course.coverImage}`} 
+                  alt={`Imagem do curso ${course.title}`}
+                />
+              )}
+              <CourseInfo>
+                <TitleCourse>{course.title}</TitleCourse>
+                <DescriptionCourse>{course.description}</DescriptionCourse>
+                <div>
+                  <ButtonEdit
+                    onClick={() => window.location.href = `/edit-course/${course.id}`}
+                  >
+                    Editar
+                  </ButtonEdit>
+                  <ButtonDelete onClick={() => handleDelete(course.id)}>
+                    Excluir
+                  </ButtonDelete>
+                </div>
+              </CourseInfo>
             </CourseCard>
           ))}
         </div>

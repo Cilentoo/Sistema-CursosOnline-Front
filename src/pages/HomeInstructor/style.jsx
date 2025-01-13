@@ -2,54 +2,85 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+`;
 
-  h1 {
-    font-size: 24px;
-  }
+export const TitleCourse = styled.h3`
+  font-size: 30px;
 `;
 
 export const CourseCard = styled.div`
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+`;
 
-  h3 {
-    margin: 0;
-    font-size: 20px;
-  }
+export const CourseImage = styled.img`
+  width: 160px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 5px;
+`;
 
-  p {
-    margin: 8px 0;
-    color: #666;
-  }
+export const DescriptionCourse  = styled.p `
+  font-size: 16px;
+  font-weight: 1300;
+`;
 
-  div {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
+export const CourseInfo = styled.div`
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const Button = styled.button`
   padding: 8px 16px;
-  font-size: 16px;
+  margin: 5px;
+  background-color: #013d32;;
+  color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: ${(props) => (props.danger ? "#fa5a54" : "#013d32")};
-  color: #fff;
 
   &:hover {
-    background-color: ${(props) => (props.danger ? "#fa5a54" : "#03A688;")};
+    background-color: #03A688;
+  }
+`;
+
+export const ButtonEdit = styled.button`
+  padding: 8px 16px;
+  margin: 5px;
+  background-color: #ffca2c;;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffca2c;
+  }
+`;
+
+export const ButtonDelete = styled.button`
+  padding: 8px 16px;
+  margin: 5px;
+  background-color: #fa5a54;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fa5a54;
   }
 `;
