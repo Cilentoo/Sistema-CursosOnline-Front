@@ -5,14 +5,12 @@ import apiService from '../../api/api';
 import { Form, InputGroup } from 'react-bootstrap';
 import {
     Container, Forme,
-    Imagem, Accessibility,
-    AccessibilityContainer,
+    Imagem,
     Titulo,
     ButtonEntrar,
     TextoEntrar,
     Logo,
 } from "./style";
-import { MdContrast, MdOutlineTextDecrease, MdOutlineTextIncrease } from 'react-icons/md';
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import { ThemeContext } from '../../context/themeContext';
 import { toast } from 'react-toastify';
@@ -79,29 +77,6 @@ export default function Login() {
     return (
         <Container>
             <Imagem src={foto} alt="icon_curso" />
-            <AccessibilityContainer>
-                <Accessibility
-                    aria-label="botao contraste"
-                    tabIndex="5"
-                    type="button"
-                    onClick={switchTheme} >
-                    <MdContrast size={28} />
-                </Accessibility>
-                <Accessibility
-                    aria-label="botao aumentar"
-                    tabIndex="6"
-                    type="button"
-                    onClick={() => changeFontSize("aumentar")}>
-                    <MdOutlineTextIncrease size={28} />
-                </Accessibility>
-                <Accessibility
-                    aria-label="botao diminuir"
-                    tabIndex="7"
-                    type="button"
-                    onClick={() => changeFontSize("diminuir")}>
-                    <MdOutlineTextDecrease size={28} />
-                </Accessibility>
-            </AccessibilityContainer >
 
             <Forme onSubmit={handleLogin}>
                 <Logo src={foto} alt="icon_curso" />
@@ -128,6 +103,11 @@ export default function Login() {
                     />
                     <InputGroup.Text id="basic-addon5">{handlePasswordButton}</InputGroup.Text>
                 </InputGroup>
+                <div className="ms-3">
+                    <a href="/" style={{ textDecoration: 'none', color: '#007bff', marginLeft: '105px' }}>
+                        Não é cadastrado? Cadastre-se Já
+                    </a>
+                </div>
                 <ButtonEntrar type="submit" tabIndex="4" aria-label="botao entrar">
                     <TextoEntrar>Entrar</TextoEntrar>
                 </ButtonEntrar>

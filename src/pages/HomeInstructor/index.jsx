@@ -71,7 +71,7 @@ export default function HomeInstructor() {
   return (
     <Container>
       <Header>
-        <h1>Meus Cursos</h1>
+        <h1>Meu Gerenciamento de Cursos</h1>
         <Button onClick={() => (window.location.href = "/create-course")}>
           Criar Novo Curso
         </Button>

@@ -1,8 +1,8 @@
 :root {
-    --toastify-color-info: var(--azul-informativo);
-    --toastify-color-success: var(--verde-sucesso);
-    --toastify-color-warning: var(--amarelo-atencao);
-    --toastify-color-error: var(--vermelho-perigo);
+    --toastify-color-info: #007bff;
+    --toastify-color-success: #28a745;
+    --toastify-color-warning: #ffc107;
+    --toastify-color-error: #dc3545;
 }
 
 .Toastify__toast-body,

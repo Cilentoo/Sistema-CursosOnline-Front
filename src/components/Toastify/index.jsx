@@ -6,7 +6,9 @@ import "./style.css";
 function ToastifyAlert(notification) {
     return (
         <div style={{
-            position: "absolute", backgroundColor: "transparent", right: 0
+            position: "absolute", 
+            backgroundColor: "transparent", 
+            right: 0
         }}>
             <ToastContainer
                 className="alert"
@@ -21,7 +23,7 @@ function ToastifyAlert(notification) {
                 pauseOnHover
                 theme="colored"
             />
-        </div >
+        </div>
     )
 }
 

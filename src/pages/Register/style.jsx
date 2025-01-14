@@ -54,28 +54,6 @@ export const Forme = styled.form`
   }
 `;
 
-export const AccessibilityContainer = styled.div`
-  position: fixed;
-  right: 1rem;
-  gap: 0.8rem;
-  top: 100px;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Accessibility = styled.button`
-  background: transparent;
-  border: none;
-  flex-direction: column;
-  cursor: pointer;
-  color:  ${({ theme }) => theme.text2};
-  
-  &:hover {
-    color: #01A998;
-    background: transparent;
-  }
-`;
-
 
 export const TogglePasswordButton = styled.button`
   background: #f8f9fa;
@@ -94,7 +72,7 @@ export const TogglePasswordButton = styled.button`
 `;
 
 export const ButtonEntrar = styled.button`
-  background: ${({ theme }) => theme.button};
+  background: #013d32;
   border: none;
   font-weight: bold;
   align-self: center;
@@ -111,7 +89,6 @@ export const ButtonEntrar = styled.button`
 `;
 
 export const TextoEntrar = styled.p`
-  color: ${({ theme }) => theme.text};
-  margin-top: 0.6rem
+  color: white;
 `;
 

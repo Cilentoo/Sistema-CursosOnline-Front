@@ -5,14 +5,12 @@ import apiService from '../../api/api';
 import { Form, InputGroup } from 'react-bootstrap';
 import {
     Container, Forme,
-    Imagem, Accessibility,
-    AccessibilityContainer,
+    Imagem, 
     Titulo,
     ButtonEntrar,
     TextoEntrar,
     Logo,
 } from "./style";
-import { MdContrast, MdOutlineTextDecrease, MdOutlineTextIncrease } from 'react-icons/md';
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import { ThemeContext } from '../../context/themeContext';
 import { toast } from 'react-toastify';
@@ -23,24 +21,13 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [role, setRole] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const { switchTheme, isDarkMode } = useContext(ThemeContext);
+
 
 
     const handlePasswordToggle = (e) => {
         e.preventDefault();
         setShowPassword(!showPassword);
     };
-
-    function changeFontSize(action) {
-        const elements = ["h1, h2"];
-        elements.map((element) => {
-            const selector = document.querySelector(element);
-            let value = getComputedStyle(selector).getPropertyValue("font-size");
-            value = value.replace("px", "");
-            value = action === "aumentar" ? parseInt(value) + 2 : parseInt(value) - 2;
-            document.querySelector(element).style.fontSize = `${value}px`;
-        });
-    }
 
 
     const handlePasswordButton = (
@@ -77,30 +64,6 @@ export default function Register() {
     return (
         <Container>
             <Imagem src={foto} alt="icon_cursos" />
-            <AccessibilityContainer>
-                <Accessibility
-                    aria-label="botao contraste"
-                    tabIndex="5"
-                    type="button"
-                    onClick={switchTheme} >
-                    <MdContrast size={28} />
-                </Accessibility>
-                <Accessibility
-                    aria-label="botao aumentar"
-                    tabIndex="6"
-                    type="button"
-                    onClick={() => changeFontSize("aumentar")}>
-                    <MdOutlineTextIncrease size={28} />
-                </Accessibility>
-                <Accessibility
-                    aria-label="botao diminuir"
-                    tabIndex="7"
-                    type="button"
-                    onClick={() => changeFontSize("diminuir")}>
-                    <MdOutlineTextDecrease size={28} />
-                </Accessibility>
-            </AccessibilityContainer >
-
             <Forme onSubmit={handleRegister}>
                 <Logo src={foto} alt="icon_cursos" />
                 <Titulo>Sistema de Cursos Online</Titulo>
@@ -137,7 +100,7 @@ export default function Register() {
                 </InputGroup>
                 <Form.Group className="mb-3">
                     <Form.Label>Para qual função é o cadastro?</Form.Label>
-                        <div key="inline-radio" className="d-flex">
+                        <div key="inline-radio" className="d-flex" >
                             <Form.Check
                                 type="radio"
                                 inline
@@ -158,6 +121,12 @@ export default function Register() {
                                 tabIndex="5"
                                 aria-label="Instrutor"
                              />
+
+                            <div className="ms-3">
+                                <a href="/login" style={{ textDecoration: 'none', color: '#007bff', marginLeft: '70px' }}>
+                                    Ja é cadastrado? Ir ao login
+                                </a>
+                            </div>
                         </div>
                     </Form.Group>
                 <ButtonEntrar type="submit" tabIndex="4" aria-label="botao entrar">

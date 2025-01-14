@@ -4,17 +4,27 @@ import HomeInstructor from "../pages/HomeInstructor";
 import Register from "../pages/Register";
 import CreateCourse from "../pages/CreateCourse";
 import EditCourse from "../pages/EditCourse";
+import Sidebar from "../components/SideBar/Sidebar";
 
 
 export default function AppRoutes() {
-    return (
 
-        <Routes>
-            <Route path="/" element={<Register />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/homeInstructor" element={<HomeInstructor />}></Route>
-            <Route path="/create-course" element={<CreateCourse />}></Route>
-            <Route path="/edit-course/:courseId" element={<EditCourse/>} />
-        </Routes>
+    const logOut = () => {
+        localStorage.removeItem("token");
+      };
+    return (
+        <div style={{ display: "flex",  padding: "20px"}}>
+        <Sidebar logOut={logOut} windowSize={window.innerWidth} />
+  
+        <div style={{ flex: 1,  }}>
+          <Routes>
+            <Route path="/" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/homeInstructor" element={<HomeInstructor />} />
+            <Route path="/create-course" element={<CreateCourse />} />
+            <Route path="/edit-course/:courseId" element={<EditCourse />} />
+          </Routes>
+        </div>
+      </div>
     );
 }
