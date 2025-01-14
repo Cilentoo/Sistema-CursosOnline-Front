@@ -74,6 +74,7 @@ const CreateCourse = () => {
         setCoverImage(null);
         setPreview(null);
         setError("");
+        window.location.href = "/homeInstructor";
       } catch (error) {
         toast.error(error.response?.data?.message || "Erro ao criar o curso. Tente novamente.");
       }
