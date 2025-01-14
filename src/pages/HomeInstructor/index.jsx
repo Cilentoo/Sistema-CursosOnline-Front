@@ -6,6 +6,21 @@ import { TitleCourse } from "./style";
 import { DescriptionCourse } from "./style";
 import { ButtonDelete } from "./style";
 import { ButtonEdit } from "./style";
+import jwt_decode from "jwt-decode"; 
+
+const getLoggedInstructorId = () => {
+  const token = localStorage.getItem('token'); 
+  if (token) {
+    try {
+      const decodedToken = jwt_decode(token); 
+      return decodedToken.instructorId || decodedToken.nameid; 
+    } catch (error) {
+      console.error("Erro ao decodificar o token", error);
+      return null;
+    }
+  }
+  return null;
+};
 
 export default function HomeInstructor() {
   const [courses, setCourses] = useState([]);
@@ -14,7 +29,20 @@ export default function HomeInstructor() {
   const fetchCourses = async () => {
     try {
       const response = await apiService.getAllCourses();
-      setCourses(response.data);
+
+      const loggedInstructorId = getLoggedInstructorId();
+
+      
+      if (!loggedInstructorId) {
+        toast.error("Você não está autenticado.");
+        return;
+      }
+
+      const filteredCourses = response.data.filter(course => {
+        return String(course.instructorId) === String(loggedInstructorId);
+      });
+      
+      setCourses(filteredCourses);
     } catch (error) {
       toast.error("Erro ao carregar cursos.");
     } finally {
