@@ -52,9 +52,13 @@ export default function HomeInstructor() {
 
   const handleDelete = async (id) => {
     try {
+      const modules = await apiService.getModulesByCourse(id);
+      for (const module of modules.data) {
+        await apiService.deleteModule(module.id);
+      }
       await apiService.deleteCourse(id);
       setCourses(courses.filter((course) => course.id !== id));
-      toast.success("Curso excluído com sucesso!");
+      toast.success("Curso e seus módulos excluídos com sucesso!");
     } catch (error) {
       toast.error("Erro ao excluir curso.");
     }
@@ -93,6 +97,11 @@ export default function HomeInstructor() {
                 <TitleCourse>{course.title}</TitleCourse>
                 <DescriptionCourse>{course.description}</DescriptionCourse>
                 <div>
+                  <Button
+                    onClick={() => window.location.href = `create-modules/${course.id}`}
+                  >
+                    Adicionar Módulos
+                  </Button>
                   <ButtonEdit
                     onClick={() => window.location.href = `/edit-course/${course.id}`}
                   >

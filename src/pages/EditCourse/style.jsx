@@ -91,3 +91,53 @@ export const ImagePreview = styled.div`
     object-fit: cover;
   }
 `;
+
+
+export const ButtonExpand = styled.button`
+  background-color: #013d32;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 4px;
+
+    &hover{
+      background-color: #03A688;
+    }
+`;
+
+export const ModulePanel = styled.div`
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+`;
+
+export const ModuleItem = styled.div`
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+`;
+
+export const ButtonSave = styled.button`
+  background-color: #013d32;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+`;
+
+export const ButtonDeleteModule = styled.button`
+  background-color: #013d32;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+`;

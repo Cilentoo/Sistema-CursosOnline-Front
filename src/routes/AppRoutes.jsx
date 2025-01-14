@@ -5,6 +5,7 @@ import Register from "../pages/Register";
 import CreateCourse from "../pages/CreateCourse";
 import EditCourse from "../pages/EditCourse";
 import Sidebar from "../components/SideBar/Sidebar";
+import CreateModules from "../pages/CreateModules";
 
 
 export default function AppRoutes() {
@@ -22,6 +23,7 @@ export default function AppRoutes() {
             <Route path="/login" element={<Login />} />
             <Route path="/homeInstructor" element={<HomeInstructor />} />
             <Route path="/create-course" element={<CreateCourse />} />
+            <Route path="/create-modules/:courseId" element={<CreateModules />} />
             <Route path="/edit-course/:courseId" element={<EditCourse />} />
           </Routes>
         </div>
