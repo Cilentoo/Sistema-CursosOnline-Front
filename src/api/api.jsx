@@ -52,8 +52,11 @@ const apiService ={
     deleteModule: (id) => api.delete(`/module/${id}`),
     getModulesByCourse: (courseId) =>
       api.get(`/module/course/${courseId}`),
+
+    createAssessment: (assessmentData) => api.post("/assessment", assessmentData),
+    getAssessmentsByCourse: (courseId) => api.get(`/assessment/course/${courseId}`),
   
-    getUserById: (id) => api.get(`user/${id}`),
+    getUserById: (id) => api.get(`/user/${id}`),
     login: (credentials) => api.post("user/login", credentials),
     register: (registrationData) =>
       api.post("user/register", registrationData),

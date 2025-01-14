@@ -37,18 +37,38 @@ function Sidebar({ logOut, windowSize }) {
     return "Usuário";
   };
 
+  const getUserIdFromToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decoded = jwt_decode(token);
+        return decoded?.nameid ? decoded.nameid : null;  
+      } catch (error) {
+        console.error("Erro ao decodificar o token:", error);
+        return null;
+      }
+    }
+    return null;
+  };
+
   const userName = getUserNameFromToken();
+  const userId = getUserIdFromToken(); 
 
   function handleLogOut() {
     logOut();
     navigate("/login"); 
   }
 
+  function handleGoToProfile() {
+    navigate(`/profile/${userId}`);
+  }
+
+
   return (
     <div className={windowSize >= 992 ? "col-1" : "col-0"} style={{ padding: 0 }}>
       <SidebarStyle collapse={sideBarCollapse}>
         <div className="logo-area">
-          {sideBarCollapse ? <span>SPL</span> : <span>Sistema de Cursos Online</span>}
+          {sideBarCollapse ? <span>SGCO</span> : <span>Sistema de Cursos Online</span>}
         </div>
         <div className="collapse-sidebar-action">
           {sideBarCollapse ? (
@@ -64,7 +84,7 @@ function Sidebar({ logOut, windowSize }) {
           )}
         </div>
 
-        <div className="user-container">
+        <div className="user-container"  onClick={handleGoToProfile}>
           <BiUserCircle title={userName} />
           {!sideBarCollapse && (
             <div className="user-info">

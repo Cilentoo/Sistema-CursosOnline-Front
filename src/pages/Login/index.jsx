@@ -14,12 +14,15 @@ import {
 import { HiOutlineLockClosed } from 'react-icons/hi';
 import { ThemeContext } from '../../context/themeContext';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const { switchTheme, isDarkMode } = useContext(ThemeContext);
+    const navigate = useNavigate();
 
 
     const handlePasswordToggle = (e) => {
@@ -60,17 +63,25 @@ export default function Login() {
 
         try{
             const response = await apiService.login({ email, password });
-            const token  = response.data.token;
-            if(token){
+            const token = response.data.token;
+
+            if (token) {
                 localStorage.setItem('token', token);
                 toast.success("Login efetuado com sucesso!");
-                          
-                setTimeout(() => {
-                    window.location.href = "/homeInstructor";
-                }, 2000);
+
+                const decodedToken = jwtDecode(token);
+                const userRole = decodedToken.role;
+                console.log(userRole);
+
+                if (userRole === "Instructor") {
+                    navigate("/homeInstructor");
+                } else if (userRole === "Student") {
+                    navigate("/homeStudent");
+                }
             }
         }catch(error){
             toast.error(error.response?.data?.message || "Erro ao efetuar login.");
+            console.log(error);
         }
     };
 
