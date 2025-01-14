@@ -7,12 +7,16 @@ import {
   ImagePreview,
   Button,
   ErrorMessage,
+  ButtonBack,
+  ButtonGroup,
 } from "./style";
 import apiService from "../../api/api";
 import { toast } from "react-toastify";
 import jwt_decode from "jwt-decode"; 
+import { useNavigate } from "react-router-dom";
 
 const CreateCourse = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [coverImage, setCoverImage] = useState(null);
@@ -121,8 +125,12 @@ const CreateCourse = () => {
             )}
           </FormGroup>
           {error && <ErrorMessage>{error}</ErrorMessage>}
-          <Button type="submit">Criar Curso</Button>
+          <ButtonGroup>
+            <Button type="submit">Criar Curso</Button>
+            <ButtonBack onClick={() => navigate(-1)}>Voltar</ButtonBack>
+          </ButtonGroup>
         </form>
+        
       </FormWrapper>
     </Container>
   );

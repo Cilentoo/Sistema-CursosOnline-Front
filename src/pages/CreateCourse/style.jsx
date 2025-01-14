@@ -72,23 +72,51 @@ export const ImagePreview = styled.div`
 
 export const Button = styled.button`
   width: 100%;
-  padding: 10px;
   font-size: 16px;
   color: #fff;
-  background-color: #007bff;
+  background-color: #013d32;
   border: none;
   border-radius: 5px;
+  width: 10rem;
+  height: 3rem;
   cursor: pointer;
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #03A688;
   }
 
   &:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
   }
+`;
+
+export const ButtonBack = styled.button`
+  background-color: #333;
+  border: 1px solid #ccc;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 5px;
+  text-align: center;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between; /* Alinha os botões com espaço entre eles */
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 20px;
 `;
 
 export const ErrorMessage = styled.p`

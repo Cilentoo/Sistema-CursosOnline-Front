@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import apiService from "../../api/api";
 import { Container, Header, Input, Button, ImagePreview } from "./style";
 import jwt_decode from "jwt-decode"; 
+import { ButtonBack } from "./style";
 
 export default function EditCourse() {
   const { courseId } = useParams(); 
@@ -15,6 +16,7 @@ export default function EditCourse() {
   const [loading, setLoading] = useState(true);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -133,8 +135,10 @@ export default function EditCourse() {
             </ImagePreview>
           )}
         </div>
-
-        <Button type="submit">Atualizar Curso</Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Button type="submit">Atualizar Curso</Button>
+            <ButtonBack onClick={() => navigate(-1)}>Voltar</ButtonBack>
+        </div>
       </form>
     </Container>
   );

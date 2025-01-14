@@ -30,23 +30,50 @@ export const Input = styled.input`
   }
 `;
 
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+`;
+
+
+export const ButtonBack = styled.button`
+    background-color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 10rem;
+    margin-top: 20px;
+    color: white;
+    &:hover {
+        background-color: #e0e0e0;
+    }
+
+    &:focus {
+        outline: none;
+    }
+`;
+
+
 export const Button = styled.button`
-  background-color: #28a745;
+  background-color: #013d32;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  width: 100%;
+  width: 10rem;
   margin-top: 20px;
 
   &:hover {
-    background-color: #218838;
+    background-color: #03A688;
   }
 
   &:active {
-    background-color: #1e7e34;
+    background-color: #03A688;
   }
 
   &:disabled {
