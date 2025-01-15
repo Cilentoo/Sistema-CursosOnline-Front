@@ -16,6 +16,7 @@ Desenvolver uma api web, na linguagem c#, para algum sistema de minha escolha, a
 • Utilizar Dapper para acesso ao banco de dados
 • .NET 8.0 ou superior
 • Integração com React VITE
+• Visual de interação para os métodos da Api
 Bônus (Extra):
 • Usar autenticação do tipo jwt, ou basic
 • Utilizar Mensageria com RabbitMq ou outro (Opcional)
@@ -68,6 +69,8 @@ Bônus (Extra):
 [aqui](https://github.com/Cilentoo/Sistema-CursosOnline-Front).**
 
 **Após baixar o projeto, você pode abrir com o Visual Code, IDE utilizada para realizar a programação.**
+**Configurar o arquivo api.jsx, na linha BASEURL com o localhost e a porta onde roda seu .NET**
+
 
 ## Stack utilizada
 
